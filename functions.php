@@ -16,6 +16,8 @@ require_once( 'library/tgm-plugin-activation.php' );
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 require_once( 'library/admin.php' );
 
+define( 'VCUARTS_BAR_MIN_STYLES', true );
+
 /*********************
 LAUNCH BONES
 Let's get everything up and running.
