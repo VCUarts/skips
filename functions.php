@@ -59,6 +59,7 @@ function bones_ahoy() {
   // cleaning up excerpt
   add_filter( 'excerpt_more', 'bones_excerpt_more' );
 
+  remove_theme_support( 'post-formats' );
 } /* end bones ahoy */
 
 // let's get this party started
@@ -200,20 +201,6 @@ new image size.
 */
 
 /************* THEME CUSTOMIZE *********************/
-
-/*
-  A good tutorial for creating your own Sections, Controls and Settings:
-  http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
-
-  Good articles on modifying the default options:
-  http://natko.com/changing-default-wordpress-theme-customization-api-sections/
-  http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
-
-  To do:
-  - Create a js for the postmessage transport method
-  - Create some sanitize functions to sanitize inputs
-  - Create some boilerplate Sections, Controls and Settings
-*/
 
 function bones_theme_customizer( $wp_customize ) {
   // $wp_customize calls go here.
