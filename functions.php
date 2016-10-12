@@ -105,7 +105,7 @@ function bones_register_required_plugins() {
             'name'      => 'Debug Bar',
             'slug'      => 'debug-bar',
             'required'  => false,
-        )
+        ),
 
     );
 
@@ -142,8 +142,8 @@ function bones_register_required_plugins() {
             'return'                          => __( 'Return to Required Plugins Installer', 'tgmpa' ),
             'plugin_activated'                => __( 'Plugin activated successfully.', 'tgmpa' ),
             'complete'                        => __( 'All plugins installed and activated successfully. %s', 'tgmpa' ), // %s = dashboard link.
-            'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-        )
+            'nag_type'                        => 'updated',// Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
+        ),
     );
 
     tgmpa( $plugins, $config );
@@ -187,8 +187,8 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
+        'bones-thumb-600' => __( '600px by 150px' ),
+        'bones-thumb-300' => __( '300px by 100px' ),
     ) );
 }
 
@@ -202,34 +202,34 @@ new image size.
 
 /************* THEME CUSTOMIZE *********************/
 
-/* 
+/*
   A good tutorial for creating your own Sections, Controls and Settings:
   http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
-  
+
   Good articles on modifying the default options:
   http://natko.com/changing-default-wordpress-theme-customization-api-sections/
   http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
-  
+
   To do:
   - Create a js for the postmessage transport method
   - Create some sanitize functions to sanitize inputs
   - Create some boilerplate Sections, Controls and Settings
 */
 
-function bones_theme_customizer($wp_customize) {
+function bones_theme_customizer( $wp_customize ) {
   // $wp_customize calls go here.
   //
-  // Uncomment the below lines to remove the default customize sections 
+  // Uncomment the below lines to remove the default customize sections
 
   // $wp_customize->remove_section('title_tagline');
-  // $wp_customize->remove_section('colors');
-  // $wp_customize->remove_section('background_image');
+  $wp_customize->remove_section('colors');
+  $wp_customize->remove_section('background_image');
   // $wp_customize->remove_section('static_front_page');
   // $wp_customize->remove_section('nav');
 
   // Uncomment the below lines to remove the default controls
   // $wp_customize->remove_control('blogdescription');
-  
+
   // Uncomment the following to change the default section titles
   // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
   // $wp_customize->get_section('background_image')->title = __( 'Images' );
@@ -283,7 +283,7 @@ function bones_register_sidebars() {
 // Comment Layout
 function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
-  <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
+  <div id="comment-<?php comment_ID(); ?>" <?php comment_class( 'cf' ); ?>>
     <article  class="cf">
       <header class="comment-author vcard">
         <?php
@@ -299,11 +299,11 @@ function bones_comments( $comment, $args, $depth ) {
         ?>
         <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
-        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ) ?>
-        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
+        <?php printf( __( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link( __( '(Edit)', 'bonestheme' ),'  ','' ) ) ?>
+        <time datetime="<?php echo comment_time( 'Y-m-j' ); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time( __( 'F jS, Y', 'bonestheme' ) ); ?> </a></time>
 
       </header>
-      <?php if ($comment->comment_approved == '0') : ?>
+      <?php if ( $comment->comment_approved == '0' ) : ?>
         <div class="alert alert-info">
           <p><?php _e( 'Your comment is awaiting moderation.', 'bonestheme' ) ?></p>
         </div>
@@ -311,7 +311,7 @@ function bones_comments( $comment, $args, $depth ) {
       <section class="comment_content cf">
         <?php comment_text() ?>
       </section>
-      <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+      <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ) ?>
     </article>
   <?php // </li> is added by WordPress automatically ?>
 <?php
@@ -326,27 +326,26 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_enqueue_style('');
+  wp_enqueue_style( '' );
 }
 
-add_action('wp_enqueue_scripts', 'bones_fonts');
+add_action( 'wp_enqueue_scripts', 'bones_fonts' );
 
 // Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
 		'comment-list',
 		'search-form',
-		'comment-form'
 	) );
 
 /*
-are_we_live() is a function for testing our environment. 
+are_we_live() is a function for testing our environment.
 @returns true if on production server false if not
 */
 
-function are_we_live(){
-  $current_server = $_SERVER['HTTP_HOST']; 
+function are_we_live() {
+  $current_server = $_SERVER['HTTP_HOST'];
 
-  if ( $current_server == 'arts.vcu.edu' ){
+  if ( $current_server == 'arts.vcu.edu' ) {
     return true;
   } else {
     return false;
@@ -359,9 +358,9 @@ get_development_scripts() tests our environment with are_we_live()
 
 use [grunt sync] to get ports for the last three scripts
 */
-function get_development_scripts(){
+function get_development_scripts() {
 
-  if ( !are_we_live() ){
+  if ( ! are_we_live() ) {
     $devscripts = include( 'library/dev-scripts.php' );
     return $devscripts;
   }
@@ -374,63 +373,59 @@ function get_development_scripts(){
 	add_theme_support( 'html5', array(
 		'comment-list',
 		'search-form',
-		'comment-form'
+		'comment-form',
 	) );
 
 // Custom walker for Skips theme to spit out anchors instead of permalinks for child pages
 class skips_walker extends Walker_Page {
   function start_lvl( &$output, $depth = 0, $args = array() ) {
-      $indent = str_repeat("\t", $depth);
+      $indent = str_repeat( "\t", $depth );
       $output .= "\n$indent<ul class='children'>\n";
   }
 
   function end_lvl( &$output, $depth = 0, $args = array() ) {
-      $indent = str_repeat("\t", $depth);
+      $indent = str_repeat( "\t", $depth );
       $output .= "$indent</ul>\n";
   }
 
   function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
-      if ( $depth )
-          $indent = str_repeat("\t", $depth);
-      else
-          $indent = '';
-      
-      extract($args, EXTR_SKIP);
-      $css_class = array('page_item', 'page-item-'.$page->ID);
-      if ( !empty($current_page) ) {
+      if ( $depth ) {
+          $indent = str_repeat( "\t", $depth );
+} else {           $indent = ''; }
+
+      extract( $args, EXTR_SKIP );
+      $css_class = array( 'page_item', 'page-item-'.$page->ID );
+      if ( ! empty( $current_page ) ) {
           $_current_page = get_post( $current_page );
-          if ( in_array( $page->ID, $_current_page->ancestors ) )
-              $css_class[] = 'current_page_ancestor';
-          if ( $page->ID == $current_page )
-              $css_class[] = 'current_page_item';
-          elseif ( $_current_page && $page->ID == $_current_page->post_parent )
-              $css_class[] = 'current_page_parent';
-      }
-      elseif ( $page->ID == get_option('page_for_posts') ) {
+          if ( in_array( $page->ID, $_current_page->ancestors ) ) {
+              $css_class[] = 'current_page_ancestor'; }
+          if ( $page->ID == $current_page ) {
+              $css_class[] = 'current_page_item'; } elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+              $css_class[] = 'current_page_parent'; }
+      } elseif ( $page->ID == get_option( 'page_for_posts' ) ) {
           $css_class[] = 'current_page_parent';
       }
-      
+
       $css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-      
-      if ($page->post_parent){          
+
+      if ( $page->post_parent ) {
           // figure out the parent such that we will get the right links even if we are not in family tree
-          $ancestors=get_post_ancestors($page->ID);
-          $root=count($ancestors)-1;
-          $parent = $ancestors[$root];
-          $permalink = get_permalink($parent);
+          $ancestors = get_post_ancestors( $page->ID );
+          $root = count( $ancestors ) -1;
+          $parent = $ancestors[ $root ];
+          $permalink = get_permalink( $parent );
 
         $output .= $indent . '<li class="' . $css_class . '"><a class="smoothScroll" href="' . $permalink . '#page-item-' . $page->ID . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
       } else {
-        $output .= $indent . '<li class="' . $css_class . '"><a class="smoothScroll" href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
+        $output .= $indent . '<li class="' . $css_class . '"><a class="smoothScroll" href="' . get_permalink( $page->ID ) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
       }
-      
-      if ( !empty($show_date) ) {
-          if ( 'modified' == $show_date )
+
+      if ( ! empty( $show_date ) ) {
+          if ( 'modified' == $show_date ) {
               $time = $page->post_modified;
-          else
-              $time = $page->post_date;
-              
-          $output .= " " . mysql2date($date_format, $time);
+} else {               $time = $page->post_date; }
+
+          $output .= ' ' . mysql2date( $date_format, $time );
       }
   }
 
@@ -438,7 +433,5 @@ class skips_walker extends Walker_Page {
       $output .= "</li>\n";
   }
 }
-
-
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
