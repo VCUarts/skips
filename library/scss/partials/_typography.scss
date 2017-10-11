@@ -15,7 +15,8 @@ http://alistapart.com/column/responsive-typography-is-a-physical-discipline
 
 ******************************************************************/
 
-@import url(https://fonts.googleapis.com/css?family=Abel);
+// @import url(https://fonts.googleapis.com/css?family=Abel);
+
 /*********************
 FONT FACE (IN YOUR FACE)
 *********************/
@@ -28,17 +29,13 @@ FONT FACE (IN YOUR FACE)
   Be sure to remove the comment brackets.
 */
 
-/*  @font-face {
-      font-family: 'Font Name';
-      src: url('library/fonts/font-name.eot');
-      src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('library/fonts/font-name.woff') format('woff'),
-             url('library/fonts/font-name.ttf') format('truetype'),
-             url('library/fonts/font-name.svg#font-name') format('svg');
+  @font-face {
+      font-family: 'AktivGroteskRegular';
+      src: url('library/fonts/AktivGrotesk_Rg.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
   }
-*/
+
 
 
 /*
@@ -49,8 +46,8 @@ I've edited it a bit, but it's a nice starting point.
 
 
 // font stacks
-$sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif:             "Abel", Cambria, Times New Roman, Times, serif;
+$sans-serif:        "AktivGroteskRegular", Helvetica, Arial, sans-serif;
+// $serif:             "Abel", Cambria, Times New Roman, Times, serif;
 
 /*
 some nice typographical defaults
