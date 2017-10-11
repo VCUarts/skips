@@ -31,12 +31,17 @@ FONT FACE (IN YOUR FACE)
 
   @font-face {
       font-family: 'AktivGroteskRegular';
-      src: url('library/fonts/AktivGrotesk_Rg.ttf') format('truetype');
+      src: url('../fonts/AktivGrotesk_Rg.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
   }
 
-
+  @font-face {
+      font-family: 'AktivGroteskLight';
+      src: url('../fonts/AktivGrotesk_Lt.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+  }
 
 /*
 The following is based of Typebase:
@@ -46,8 +51,8 @@ I've edited it a bit, but it's a nice starting point.
 
 
 // font stacks
-$sans-serif:        "AktivGroteskRegular", Helvetica, Arial, sans-serif;
-// $serif:             "Abel", Cambria, Times New Roman, Times, serif;
+$sans-serif: "AktivGroteskLight", Times, Helvetica, sans-serif;
+// $serif:   "Abel", Cambria, Times New Roman, Times, serif;
 
 /*
 some nice typographical defaults
