@@ -2,7 +2,7 @@
 
 				<div id="inner-footer">
 
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> VCUarts</p>
 
 				</div>
 
