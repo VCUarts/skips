@@ -1701,6 +1701,10 @@ h2 {
 
 .entry-content p {
 	margin: 0 0 1.5em;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 
 .entry-content ul {
