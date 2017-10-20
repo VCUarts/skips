@@ -3,14 +3,19 @@
     border: none;
     outline: none;
   }
-
-  @include span(last 9 of 12);
+  background: #333;
+  border-bottom: 3px solid #ed3043;
+  left: 0;
+  width: 100%;
+  display: block;
+  position: fixed;
+  // @include span(last 9 of 12);
 }
 
 .vcuarts-branding-bar a.vcuarts-bar .arts-color {
-  fill: $black;
+  fill: $white;
 }
 
 .vcuarts-branding-bar .inner-vcubar {
-  padding: 0 40px 0 0;
+  padding: 0 22px;
 }
